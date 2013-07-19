@@ -3,6 +3,7 @@
 require 'rubygems'
 require 'net/http'
 require 'json'
+require 'time'
 
 def get_loc_ip()
     ip=Net::HTTP.get_response(URI("http://www.myexternalip.com/raw"))
@@ -19,7 +20,7 @@ end
 if ARGV.length !=2
   STDOUT.puts <<-EOF
     usage:
-    script [ip] port]
+    script [ip] [port]
   EOF
 else
   if ARGV[0].empty?
@@ -34,8 +35,8 @@ else
   end
   result=get_result(url=ip,port=port)
   result.each do |k,v|
-    x=DateTime.parse(v,utc)
-    puts "#{x}"
+    usec=Time.parse(v).to_i
+    puts "#{usec}"
   end
 end
 

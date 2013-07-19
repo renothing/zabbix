@@ -4,11 +4,6 @@ require 'rubygems'
 require 'net/http'
 require 'json'
 
-def get_loc_ip()
-    ip=Net::HTTP.get_response(URI("http://www.myexternalip.com/raw"))
-    return ip.body
-end
-
 def get_result(url='localhost',port=80)
   res=[]
   respone=Net::HTTP.get_response(URI("http://#{url}:#{port}//alarms.json?zbx=failed_order"))
@@ -19,7 +14,7 @@ end
 if ARGV.length !=2
   STDOUT.puts <<-EOF
     usage:
-    script [ip] port]
+    script [ip] [port]
   EOF
 else
   if ARGV[0].empty?
