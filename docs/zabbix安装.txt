@@ -1,0 +1,25 @@
+for server
+#install requirements
+apt-get install libssh2-1 fping libcurl3 libiksemel3 libcurl4-openssl-dev
+#apt-get install libmysqlclient18 libmysqlclient18-dev libsnmp-dev
+#apt-get install gcc g++ autoconf autoconf2.13 make cmake patch
+#add user
+groupadd zabbix
+useradd -g zabbix zabbix
+#create database
+shell> mysql -u<username> -p<password>
+mysql> create database zabbix character set utf8;
+mysql> quit;
+shell> mysql -u<username> -p<password> zabbix < database/mysql/schema.sql
+# stop here if you are creating database for Zabbix proxy
+shell> mysql -u<username> -p<password> zabbix < database/mysql/images.sql
+shell> mysql -u<username> -p<password> zabbix < database/mysql/data.sql
+
+#complie 
+./configure --prefix=/usr/local/zabbix --enable-server --enable-agent --enable-ipv6 --with-mysql --with-libcurl --with-ssh2 
+#
+grant all privileges on zabbix.* to zabbix@localhost identified by 'ubįZcSpPc750t5';
+编译：
+./configure --prefix=/usr/local/zabbix --enable-server --enable-proxy --enable-agent --enable-ipv6 --with-mysql --with-net-snmp --with-libcurl --with-openipmi
+make && make install
+

@@ -1,0 +1,11 @@
+Confusion with  Update interval and Flexible intervals
+Refresh this item every N seconds.
+Update interval (in sec)
+	Note: If set to '0', the item will not be polled. However, if a flexible interval also exists with a non-zero value, the item will be polled 		during the flexible interval duration.
+Flexible intervals
+	You can create exceptions to Update interval. For example:
+	Interval: 10, Period: 1-5,09:00-18:00 - will set the refresh to every 10 seconds for working hours. Otherwise default update interval will be 		used.
+	If multiple flexible intervals overlap, the smallest Interval value is used for the overlapping period.
+	See the page about setting time periods for description of the Period format.
+	Note: If set to '0', the item will not be polled during the flexible interval duration and will resume polling according to the Update 		interval once the flexible interval period is over.
+	Note: Not available for Zabbix agent active items.

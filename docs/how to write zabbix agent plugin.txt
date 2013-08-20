@@ -1,0 +1,8 @@
+#how to write zabbix agent plugin
+# @author renothing
+references:
+https://www.zabbix.com/documentation/2.0/manual/config/items/userparameters
+https://www.zabbix.com/documentation/2.0/manual/config/items/userparameters/extending_agent
+https://www.zabbix.com/wiki/howto/monitor/db/mysql/extensive_mysql_monitoring_including_replication
+http://www.badllama.com/content/monitor-mysql-zabbix
+http://code.google.com/p/appaloosa-zabbix-templates/

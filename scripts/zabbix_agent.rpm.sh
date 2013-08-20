@@ -3,7 +3,7 @@
 # @author renothing
 
 predir=/usr/local
-z_version=2.0.6
+z_version=2.0.7
 z_server=$1
 Usage(){
     echo "Usage:" 1>&2
