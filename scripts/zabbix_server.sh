@@ -8,7 +8,7 @@ z_db='zabbix'
 db_user='zabbix'
 db_pass=`openssl rand -base64 12`
 #install requirements
-apt-get install -y libssh2-1 fping libcurl3 libiksemel3 libcurl4-openssl-dev libssh2-1 libssh2-1-dev
+apt-get install -y libssh2-1 fping libcurl3 libiksemel3 libcurl4-openssl-dev libssh2-1 libssh2-1-dev unixodbc unixodbc-dev
 apt-get install -y libmysqlclient18 libmysqlclient18-dev libsnmp-dev libopenipmi-dev
 apt-get install -y gcc g++ autoconf autoconf2.13 make cmake patch
 ps aux|grep mysqld|grep -q -v "grep"|| { echo "please install mysql server first" && exit 1;}
