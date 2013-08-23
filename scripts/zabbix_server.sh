@@ -27,7 +27,7 @@ fi
 rm -rf zabbix-${z_version}
 tar xf zabbix-${z_version}.tar.gz
 cd zabbix-${z_version}
-./configure --prefix=${predir}/zabbix --enable-server --enable-proxy --enable-agent --enable-ipv6 --with-mysql --with-ssh2 --with-net-snmp --with-libcurl --with-openipmi 
+./configure --prefix=${predir}/zabbix --enable-server --enable-proxy --enable-agent --enable-ipv6 --with-mysql --with-ssh2 --with-net-snmp --with-libcurl --with-openipmi --with-unixodbc 
 make && make install
 #config zabbix agent
 sed -i '/^$/d;/^#/d' > ${predir}/etc/zabbix_agentd.conf

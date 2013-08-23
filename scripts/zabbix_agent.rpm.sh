@@ -21,7 +21,7 @@ if [[ ! -n $z_server ]];then
 fi
 #install requirements
 yum install -y gcc gcc-c++ autoconf autoconf213 cmake patch
-yum install -y libssh2 libssh2-devel fping curl-devel iksemel-devel iksemel-utils Percona-Server-shared-compat net-snmp-libs net-snmp-devel
+yum install -y libssh2 libssh2-devel fping curl-devel iksemel-devel iksemel-utils Percona-Server-shared-compat net-snmp-libs net-snmp-devel unixODBC-devel unixODBC
 #add user
 groupadd zabbix
 useradd -g zabbix zabbix
@@ -34,7 +34,7 @@ fi
 rm -rf zabbix-${z_version}
 tar xf zabbix-${z_version}.tar.gz
 cd zabbix-${z_version}
-./configure --prefix=${predir}/zabbix --enable-agent --enable-ipv6 --with-mysql --with-net-snmp --with-libcurl --with-openipmi
+./configure --prefix=${predir}/zabbix --enable-agent --enable-ipv6 --with-mysql --with-net-snmp --with-libcurl --with-openipmi --with-unixodbc
 make && make install
 #config zabbix agent
 cat > ${predir}/zabbix/etc/zabbix_agentd.conf <<EOF

@@ -31,22 +31,22 @@ version=`lsb_release -r|awk '{print $2}'|cut -d"." -f1`
 case $release in
 squeeze)
 	#for debian6
-	apt-get install -y libssh2-1 fping libcurl3 libiksemel3 libcurl4-openssl-dev
+	apt-get install -y libssh2-1 fping libcurl3 libiksemel3 libcurl4-openssl-dev unixodbc unixodbc-dev
 	apt-get install -y libmysqlclient18 libmysqlclient18-dev libsnmp-dev libopenipmi-dev
 	apt-get install -y gcc g++ autoconf autoconf2.13 make cmake patch;;
 maverick)
 	#for ubuntu 10.10
-	apt-get install -y libssh2-1 fping libcurl3 libiksemel3 libcurl4-openssl-dev
+	apt-get install -y libssh2-1 fping libcurl3 libiksemel3 libcurl4-openssl-dev unixodbc unixodbc-dev
 	apt-get install -y libmysqlclient-dev libmysqlclient-dev libsnmp-dev libsnmp15 openipmi libopenipmi-dev
 	apt-get install -y gcc g++ autoconf autoconf2.13 make cmake patch;;
 natty)
 	#for ubuntu 11.04
-	apt-get install -y libssh2-1 fping libcurl3 libiksemel3 libcurl4-openssl-dev
+	apt-get install -y libssh2-1 fping libcurl3 libiksemel3 libcurl4-openssl-dev unixodbc unixodbc-dev
 	apt-get install -y libmysqlclient16 libmysqlclient-dev libsnmp-dev libopenipmi-dev
 	apt-get install -y gcc g++ autoconf autoconf2.13 make cmake patch;;
 precise)
 	#for ubuntu 12.04
-	apt-get install -y libssh2-1 fping libcurl3 libiksemel3 libcurl4-openssl-dev
+	apt-get install -y libssh2-1 fping libcurl3 libiksemel3 libcurl4-openssl-dev unixodbc unixodbc-dev
 	apt-get install -y libmysqlclient18 libmysqlclient-dev libsnmp-dev libopenipmi-dev
 	apt-get install -y gcc g++ autoconf autoconf2.13 make cmake patch;;
 esac
@@ -63,7 +63,7 @@ fi
 rm -rf zabbix-${z_version}
 tar xf zabbix-${z_version}.tar.gz
 cd zabbix-${z_version}
-./configure --prefix=${predir}/zabbix --enable-agent --enable-ipv6 --with-ssh2 --with-libcurl --with-openipmi
+./configure --prefix=${predir}/zabbix --enable-agent --enable-ipv6 --with-ssh2 --with-libcurl --with-openipmi --with-unixodbc
 make && make install
 #config zabbix agent
 cat > ${predir}/zabbix/etc/zabbix_agentd.conf <<EOF
