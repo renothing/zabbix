@@ -6,6 +6,7 @@ function usage(){
 [ $1 ] && r=$1 || usage
 [ $2 ] && t=$2 || usage
 [ $3 ] && c=$3 || c=10
-[ $4 ] && w=$4 || w=1
+[ $4 ] && w=$4 || w=50
 [ $r == 'sec' ] && r=5 || r=6
-[ $r == 6 ] && ping -vqanfc $c -W $w $t|awk '/transmitted/{print $6}' || ping -vqanfc $c -W $w $t|awk '/rtt/{split($2$3$4,a,"=");split(a[2],a,"/");print a[2]}'
+#[ $r == 6 ] && ping -vqanfc $c -W $w $t|awk '/transmitted/{print $6}' || ping -vqanfc $c -W $w $t|awk '/rtt/{split($2$3$4,a,"=");split(a[2],a,"/");print a[2]}'
+[ $r == 6 ] && fping -Aqr 1 -i 10 -p 20 -t $w -c $c $t 2>&1|tail -1|awk -F',' '/xmt/{split($1,a,"/");print 100-100*a[length(a)-1]/"'$c'"}' || fping -Aqr 1 -i 10 -p 20 -t $w -c $c $t 2>&1|awk -F',' '/xmt/{split($2,a,"/");print a[length(a)-1]}'
