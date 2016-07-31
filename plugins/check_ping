@@ -1,0 +1,11 @@
+#!/bin/bash
+function usage(){
+  echo "unknown type or unkown target!"
+  exit 1
+}
+[ $1 ] && r=$1 || usage
+[ $2 ] && t=$2 || usage
+[ $3 ] && c=$3 || c=10
+[ $4 ] && w=$4 || w=1
+[ $r == 'sec' ] && r=5 || r=6
+[ $r == 6 ] && ping -vqanfc $c -W $w $t|awk '/transmitted/{print $6}' || ping -vqanfc $c -W $w $t|awk '/rtt/{split($2$3$4,a,"=");split(a[2],a,"/");print a[2]}'
